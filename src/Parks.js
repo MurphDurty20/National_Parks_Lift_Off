@@ -32,7 +32,6 @@ const Parks = () => {
                    <p>{JSON.stringify(park['entranceFees'])}</p>
                 </div>))}
         </div>)
-    
 }
     
 export default Parks
