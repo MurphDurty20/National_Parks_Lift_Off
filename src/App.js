@@ -1,6 +1,8 @@
 import './App.css';
 import Sidebar from './SideNav/Sidebar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { useEffect } from 'react';
+import Search from './search';
 
 const App = () => {
   return (
