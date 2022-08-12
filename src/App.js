@@ -7,7 +7,8 @@ import Search from './search';
 
 
 const App = () => { 
-  return ( <>
+  return ( 
+  <>
     <div className="App">
 
       <h1> National Parks </h1>
@@ -21,7 +22,7 @@ const App = () => {
       </Router>
     </div>
 < />
-  );
+  )
 }
 
 
