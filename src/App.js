@@ -1,11 +1,10 @@
-import  Layout  from './components/Layout'
 import './App.css';
-import SearchResults from './components/SearchResults';
+import Parks from './components/Parks';
 import RegistrationPage from './components/RegistrationPage';
 import Sidebar from './SideNav/Sidebar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { useEffect } from 'react';
 import Search from './search';
+
 
 const App = () => { 
   
@@ -19,7 +18,8 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/' />
-          <Route path="search" element={<SearchResults/>}/>
+          <Route path="parksresult" element={<Parks/>}/>
+          <Route path="register" element={<RegistrationPage/>}/>
         </Routes>
 
       </Router>
