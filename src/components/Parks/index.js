@@ -3,7 +3,8 @@ import "./index.css"
 
 const  Parks = () => {
     const NP_API_KEY = process.env.REACT_APP_PARK_API_KEY;
-    const url = `https://developer.nps.gov/api/v1/parks?stateCode=ny&api_key=${NP_API_KEY}`;
+    const url = `https://developer.nps.gov/api/v1/parks?stateCode=mo
+    &api_key=${NP_API_KEY}`;
 
     const [parkData, setParkData] = useState([])
     const [readMore, setReadMore] = useState(false);
@@ -16,7 +17,7 @@ const  Parks = () => {
             })
     },[])
 
-    console.log(parkData)
+    
     return ( 
     <main>
         {parkData.map((park) => (
