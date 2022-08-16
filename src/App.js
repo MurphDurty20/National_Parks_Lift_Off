@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useEffect } from 'react';
 import Search from './search';
 import MapSection from './components/map/map.jsx'
+import Parks from './Parks.js';
+import Alerts from './Alerts.js';
 
 
 const location = {
@@ -18,17 +20,20 @@ const App = () => {
   return (
     <div className="App">
 
+      <Sidebar />
       <h1> National Parks </h1>
       <MapSection location={location} zoomLevel={17} />
       <Search />
-      <Router>
+      <Parks />
+      <Alerts />
+      {/* <Router>
         <Sidebar />
         <Routes>
           <Route path='/' />
           <Route path="search" element={<SearchResults/>}/>
         </Routes>
 
-      </Router>
+      </Router> */}
     </div>
   )
 }
