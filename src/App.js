@@ -1,5 +1,3 @@
-import { Routes, Route } from 'react-router-dom'
-import  Layout  from './components/Layout'
 import './App.css';
 import SearchResults from './components/SearchResults';
 import RegistrationPage from './components/RegistrationPage';
@@ -7,12 +5,21 @@ import Sidebar from './SideNav/Sidebar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useEffect } from 'react';
 import Search from './search';
+import MapSection from './components/map/map.jsx'
+
+
+const location = {
+  address: '1600 Amphitheatre Parkway, Mountain View, California.',
+  lat: 37.42216,
+  lng: -122.08427,
+}
 
 const App = () => { 
-  return ( <>
+  return (
     <div className="App">
 
       <h1> National Parks </h1>
+      <MapSection location={location} zoomLevel={17} />
       <Search />
       <Router>
         <Sidebar />
@@ -23,9 +30,9 @@ const App = () => {
 
       </Router>
     </div>
-< />
-  );
+  )
 }
+
 
 
 export default App;
