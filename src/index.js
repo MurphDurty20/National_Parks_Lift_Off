@@ -12,8 +12,8 @@ root.render(
   //<React.StrictMode>
   <BrowserRouter>
     <App />
-    <Parks />
-    <Alerts />
+    {/* <Parks />
+    <Alerts /> */}
     </BrowserRouter>
   //</React.StrictMode>
 );
