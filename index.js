@@ -7,12 +7,9 @@ const db = require('./src/components/config/db');
 
 
 const app = express();
+app.use(cors());
 
-app.use(cors())
-
-db.query("CREATE TABLE IF NOT EXISTS fav_park( cid MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, location VARCHAR(50) NOT NULL, PRIMARY KEY(cid) ) ENGINE = innodb;");
-
-
+db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, location VARCHAR(50) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
 
 app.get('/', (request,response) => {
     response.json("hi")
@@ -43,7 +40,5 @@ axios.request(options).then((response) => {
     console.error(error)
 })
 })
-
-
 
 app.listen(PORT, () => console.log(`port is ${PORT}`))
