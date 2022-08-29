@@ -9,7 +9,6 @@ import MapSection from './components/map/map.jsx'
 import Parks from './Parks.js';
 import Alerts from './Alerts.js';
 
-
 const location = {
   address: 'Default location, change to search',
   lat: 37.42216,
