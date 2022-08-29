@@ -9,11 +9,10 @@ import MapSection from './components/map/map.jsx'
 import Parks from './Parks.js';
 import Alerts from './Alerts.js';
 
-
 const location = {
-  address: '1600 Amphitheatre Parkway, Mountain View, California.',
+  address: 'Default location, change to search',
   lat: 37.42216,
-  lng: -122.08427,
+  lng: -100,
 }
 
 const App = () => { 
@@ -32,12 +31,10 @@ const App = () => {
           <Route path='/' />
           <Route path="search" element={<SearchResults/>}/>
         </Routes>
-
       </Router> */}
     </div>
   )
 }
-
 
 
 export default App;
