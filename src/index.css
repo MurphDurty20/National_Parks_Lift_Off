@@ -12,12 +12,12 @@ code {
     monospace;
 }
 
-.searchBarFeature {
+/*.search {
   width: 30rem;
   height: 20px;
   text-align: center;
   font-size: 15px;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
-  background: rgb(245, 245, 245);
+  background: rgb(199, 70, 70);
   border-radius: 5px;
-}
+}*/
