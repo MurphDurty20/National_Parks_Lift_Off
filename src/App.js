@@ -22,10 +22,11 @@ const App = () => {
 
       <Sidebar />
       <h1> National Parks </h1>
-      <MapSection location={location} zoomLevel={17} />
       <Search />
-      <Parks />
+      <MapSection location={location} zoomLevel={17} />
       <Alerts />
+      <Parks />
+
       {/* <Router>
         <Sidebar />
         <Routes>
