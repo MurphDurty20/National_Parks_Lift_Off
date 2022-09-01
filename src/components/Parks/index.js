@@ -17,6 +17,7 @@ const  Parks = () => {
             })
     },[])
 
+    console.log(parkData)
     
     return ( 
     <main>

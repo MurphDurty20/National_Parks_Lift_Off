@@ -1,11 +1,13 @@
 import { useState } from "react"
+import {useNavigate} from 'react-router-dom';
 
 const RegistrationPage = () => {
+    const navigate = useNavigate();
 
     const [values, setValues] = useState({
+        email:"",
         username: "",
         password: "",
-        verfifyPassword:""
     })
 
     const handleChange = (event) => {
@@ -28,7 +30,7 @@ const RegistrationPage = () => {
 
         headers.append('GET', 'POST', 'OPTIONS');
         try {
-            let res = await fetch("http://localhost:8080/api/v1/registration", {
+            let res = await fetch("http://localhost:8080/api/auth/signup", {
                 mode:"cors",
                 // credentials: 'include',
                 method: 'POST',
@@ -38,6 +40,7 @@ const RegistrationPage = () => {
             let resJson = await res.json();
             if (res.status === 200) {
               console.log("User created successfully");
+              navigate('/parksresult')
               return resJson;
             } 
           } catch (err) {
@@ -50,6 +53,9 @@ const RegistrationPage = () => {
         <main>
             <form onSubmit={handleSubmit}>
                 <div>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" placeholder="Enter Email" name="email" value={values.email} onChange={handleChange} required/>
+                    
                     <label htmlFor="username">Username</label>
                     <input type="text" placeholder="Enter Username" name="username" value={values.username} onChange={handleChange} required/>
                     
