@@ -40,7 +40,7 @@ const RegistrationPage = () => {
             let resJson = await res.json();
             if (res.status === 200) {
               console.log("User created successfully");
-              navigate('/parksresult')
+            //   navigate('/parksresult')
               return resJson;
             } 
           } catch (err) {
