@@ -8,6 +8,8 @@ import Search from './search';
 import MapSection from './components/map/map.jsx'
 import Parks from './Parks.js';
 import Alerts from './Alerts.js';
+import Fav from './Fav.js';
+import {useState } from 'react';
 
 const location = {
   address: 'Default location, change to search',
@@ -18,10 +20,11 @@ const location = {
 const App = () => { 
   return (
     <div className="App">
-
+  
       <Sidebar />
       <h1> National Parks </h1>
       <Search />
+      <Fav />
       <MapSection location={location} zoomLevel={17} />
       <Alerts />
       <Parks />
