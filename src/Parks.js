@@ -1,9 +1,13 @@
 import {useEffect, useState} from 'react'
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 
 const Parks = () => {
 
     const [parkInfo, getParkInfo] = useState(null)
+
+    const [parkInfo2, getParkInfo2] = useState(null)
+
+    const [allParks, setAllParks] = useState(null)
 
     useEffect(() => {
 
@@ -21,17 +25,15 @@ const Parks = () => {
         })
     }, [])
 
-    //console.log(parkInfo)
-
-    return (<div className="parks">
-            <h2><center>(and fees)</center></h2>
-            {parkInfo?.map((park, _index) => (
-
+    return (<div className="parks"> 
+            {
+            parkInfo?.map((park, _index) => (
                 <div key={_index}>
-                   <a href={park['url']}><p>{park['fullName']}</p></a>
-                   <p>{JSON.stringify(park['entranceFees'])}</p>
+                            <p value = {park['fullName']}>{park['fullName']}</p>
+                            <p value = {park['parkCode']}>{park['parkCode']}</p>
                 </div>))}
-        </div>)
+      </div>)
+
 }
-    
+
 export default Parks
