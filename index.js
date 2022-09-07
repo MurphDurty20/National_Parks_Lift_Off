@@ -2,21 +2,40 @@ const PORT = 8000;
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const app = express();
 require("dotenv").config();
 const db = require('./src/components/config/db');
+const bodyParser = require('body-parser');
 
-
-const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //creates fav_park table when backend runs if it doesn't already exist.
 db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, address VARCHAR(150) NOT NULL,latitude DECIMAL(13,10) NOT NULL, longitude DECIMAL(13,10) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
 
-db.query("INSERT INTO fav_park(name,address,latitude,longitude) VALUES ('Abraham Lincoln Birthplace National Historical Park','2995 lincoln farm road hodgenville ky 42748', 37.5858662,-85.67330523)");
+//app.get('/', (request,response) => {
+  //  response.json("hi")
+//})
 
-app.get('/', (request,response) => {
-    response.json("hi")
+
+app.get("/favlist", (req, res) => {
+    db.query("SELECT * FROM fav_park", (err,result) => {
+        console.log(result);
+        res.send(result);
+    })
 })
+
+app.post("/", (req,res) => {
+
+    const favParkName = req.body.favParkName;
+    const sqlInsert = "INSERT INTO fav_park(name,address,latitude,longitude) VALUES (?, '2995 lincoln farm road hodgenville ky 42748', 37.5858662,-85.67330523)";
+    db.query(sqlInsert, [favParkName], (err, result) => {
+        console.log(err);
+    });
+    })
+
+   
 
 app.get('/parks', (req,res) => {
     const options = {
