@@ -5,6 +5,8 @@ import LoginPage from './components/LoginPage';
 import Sidebar from './SideNav/Sidebar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Search from './search';
+import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App = () => { 
@@ -20,6 +22,11 @@ const App = () => {
         <Routes>
           <Route path='/' />
           <Route path="parksresult" element={<Parks/>}/>
+          <Route path="profile" element={
+          <PrivateRoute>
+            <Profile/>
+          </PrivateRoute>
+          }/>
           <Route path="register" element={<RegistrationPage/>}/>
           <Route path="login" element={<LoginPage/>}/>
         </Routes>
