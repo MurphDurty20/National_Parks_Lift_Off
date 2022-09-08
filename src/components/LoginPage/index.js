@@ -1,5 +1,6 @@
 import { useState } from "react"
 import {useNavigate} from 'react-router-dom';
+import { useLocalState } from "../../util/useLocalStorage";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -8,6 +9,7 @@ const LoginPage = () => {
         username: "",
         password: ""
     })
+    const [jwt, setJwt] = useLocalState("","jwt")
 
     const handleChange = (event) => {
         setValues({
@@ -24,11 +26,14 @@ const LoginPage = () => {
         headers.append('Content-Type', 'application/json');
         // headers.append('Accept', 'application/json');
 
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-        headers.append('Access-Control-Allow-Credentials', 'true');
+        // headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+        // headers.append('Access-Control-Allow-Credentials', 'true');
 
-        headers.append('GET', 'POST', 'OPTIONS');
+        // headers.append('GET', 'POST', 'OPTIONS');
         try {
+            if(!jwt){
+                
+            }
             let res = await fetch("http://localhost:8080/api/auth/signin", {
                 mode:"cors",
                 // credentials: 'include',
@@ -37,9 +42,11 @@ const LoginPage = () => {
                 body: JSON.stringify(values),
             });
             let resJson = await res.json();
+            setJwt(resJson.accessToken);
             if (res.status === 200) {
               console.log("User login successfully");
-              navigate('/parksresult')
+            //   navigate('/parksresult')
+            console.log(resJson)
               return resJson;
             } 
           } catch (err) {
@@ -50,6 +57,7 @@ const LoginPage = () => {
 
     return ( 
         <main>
+            <div>Jwt: {jwt}</div>
             <form onSubmit={handleSubmit}>
                 <div> 
                     <label htmlFor="username">Username</label>

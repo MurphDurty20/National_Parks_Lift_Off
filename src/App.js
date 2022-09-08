@@ -23,7 +23,6 @@ const App = () => {
           <Route path="register" element={<RegistrationPage/>}/>
           <Route path="login" element={<LoginPage/>}/>
         </Routes>
-
       </Router>
     </div>
 
