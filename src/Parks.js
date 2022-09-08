@@ -25,6 +25,18 @@ const Parks = () => {
         })
     }, [])
 
+
+//doesnt work
+    useEffect(() => {
+    axios.post("http://localhost:8000/codes", {parkInfo: parkInfo
+}).then(() => {
+    alert("Sending to backend success");
+});
+}, [])
+
+
+
+
     return (<div className="parks"> 
             {
             parkInfo?.map((park, _index) => (
