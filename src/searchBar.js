@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './searchBar.css';
  
-const API_KEY=process.env.REACT_APP_PARK_API_KEY
+//const API_KEY=process.env.REACT_APP_PARK_API_KEY
  
 function SearchBar() {
  
@@ -14,7 +14,7 @@ function SearchBar() {
  
   useEffect(() => {
     const loadParks = async() => {
-      const response = await axios.get(`https://developer.nps.gov/api/v1/parks?limit=467&api_key=${API_KEY}`)
+      const response = await axios.get(`http://localhost:8000/parks`)
       setParks(response.data.data)
  
       console.log(response.data)
