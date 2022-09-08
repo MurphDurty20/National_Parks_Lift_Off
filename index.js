@@ -43,5 +43,31 @@ axios.request(options).then((response) => {
     console.error(error)
 })
 })
+/*
+app.get('parksplaces', (req,res) => {
+    const options = {
+        method: 'GET',
+        url: `https://developer.nps.gov/api/v1/amenities/parksplaces?limit=500&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+}
+axios.request(options).then((response) => {
+    res.json(response.data)
+
+}).catch((error) => {
+    console.error(error)
+})
+})
+*/
+app.get('/campgrounds', (req,res) => {
+    const options = {
+        method: 'GET',
+        url: `https://developer.nps.gov/api/v1/campgrounds?limit=5&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+}
+axios.request(options).then((response) => {
+    res.json(response.data)
+
+}).catch((error) => {
+    console.error(error)
+})
+})
 
 app.listen(PORT, () => console.log(`port is ${PORT}`))
