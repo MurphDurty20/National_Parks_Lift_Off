@@ -6,7 +6,6 @@ import Home from './components/Pages/Home/Home';
 import ResultTemplate from './components/Pages/Home/ResultTemplate/index';
 
 
-
 const App = () => { 
   return (
     <div className="App">

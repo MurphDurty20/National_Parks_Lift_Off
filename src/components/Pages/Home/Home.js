@@ -3,6 +3,7 @@ import './Home.css';
 import Map from '../../map/map';
 import Parks from '../../../Parks';
 import Alerts from '../../../Alerts';
+import campgrounds from '../../../campgrounds';
 
 
 
@@ -19,6 +20,7 @@ const location = {
         <Map location={location} zoomLevel={17} />
         <Alerts />
         <Parks />
+        <campgrounds />
     </div>
 )}
 
