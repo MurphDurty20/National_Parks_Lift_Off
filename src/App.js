@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Search from './search';
 import Home from './components/Pages/Home/Home';
 import ResultTemplate from './components/Pages/Home/ResultTemplate/index';
+import RegistrationPage from './components/RegistrationPage';
+import LoginPage from './components/LoginPage';
+import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App = () => { 
@@ -16,12 +20,16 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ResultTemplate" element={<ResultTemplate />} />
+          <Route path="profile" element={
+          <PrivateRoute>
+            <Profile/>
+          </PrivateRoute>
+          }/>
+          <Route path="register" element={<RegistrationPage/>}/>
+          <Route path="login" element={<LoginPage/>}/>
         </Routes>
      </Router>
     </div>
-
-
-
   )
 }
 
