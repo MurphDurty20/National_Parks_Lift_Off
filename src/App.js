@@ -1,5 +1,4 @@
 import './App.css';
-import Parks from './components/Parks';
 import RegistrationPage from './components/RegistrationPage';
 import LoginPage from './components/LoginPage';
 import Sidebar from './SideNav/Sidebar';
@@ -21,7 +20,6 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/' />
-          <Route path="parksresult" element={<Parks/>}/>
           <Route path="profile" element={
           <PrivateRoute>
             <Profile/>
