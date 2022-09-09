@@ -31,9 +31,6 @@ const LoginPage = () => {
 
         // headers.append('GET', 'POST', 'OPTIONS');
         try {
-            if(!jwt){
-                
-            }
             let res = await fetch("http://localhost:8080/api/auth/signin", {
                 mode:"cors",
                 // credentials: 'include',
@@ -45,7 +42,7 @@ const LoginPage = () => {
             setJwt(resJson.accessToken);
             if (res.status === 200) {
               console.log("User login successfully");
-            //   navigate('/parksresult')
+              navigate('/')
             console.log(resJson)
               return resJson;
             } 
