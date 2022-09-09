@@ -3,9 +3,8 @@ import './Home.css';
 import Map from '../../map/map';
 import Parks from '../../../Parks';
 import Alerts from '../../../Alerts';
-
-
-
+import Fav from '../../../Fav';
+import SearchBar from '../../../searchBar';
 
 const location = {
     address: 'Default location, change to search',
@@ -16,6 +15,8 @@ const location = {
   const Home = () => { 
     return (
     <div>
+      <SearchBar />
+        <Fav />
         <Map location={location} zoomLevel={17} />
         <Alerts />
         <Parks />

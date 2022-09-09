@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 //creates fav_park table when backend runs if it doesn't already exist.
 db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, address VARCHAR(150) NOT NULL,latitude DECIMAL(13,10) NOT NULL, longitude DECIMAL(13,10) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
 
+db.query("CREATE TABLE IF NOT EXISTS all_parks( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, codeName VARCHAR(5) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
+
 //app.get('/', (request,response) => {
   //  response.json("hi")
 //})
@@ -35,7 +37,26 @@ app.post("/", (req,res) => {
     });
     })
 
-   
+
+    //doesnt work
+    app.post("/codes", (req,res) => {
+        const parkInfo = req.body.parkInfo;
+        console.log(parkInfo);
+        const sqlInsert = "INSERT INTO all_parks(name,codeName) VALUES (?, ?)";
+      //  parkInfo?.map((park, _index) => (
+          //  db.query(sqlInsert, [parkInfo, park['parkCode']], (err, result) => {
+            db.query(sqlInsert, [parkInfo, 'auto'], (err, result) => {
+            //    console.log(err);
+            
+         //   });
+    
+       // ));
+
+    
+    })
+})
+
+    
 
 app.get('/parks', (req,res) => {
     const options = {
@@ -54,6 +75,34 @@ app.get('/alerts', (req,res) => {
     const options = {
         method: 'GET',
         url: `https://developer.nps.gov/api/v1/alerts?limit=5&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+}
+axios.request(options).then((response) => {
+    res.json(response.data)
+
+}).catch((error) => {
+    console.error(error)
+})
+})
+
+app.get('/oneParkInfo', (req,res) => {
+    let code = "yell";
+    const options = {
+        method: 'GET',
+        url: `https://developer.nps.gov/api/v1/parks?parkCode=${code}&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+}
+axios.request(options).then((response) => {
+    res.json(response.data)
+
+}).catch((error) => {
+    console.error(error)
+})
+})
+
+app.get('/searchBar', (req,res) => {
+  
+    const options = {
+        method: 'GET',
+        url: `https://developer.nps.gov/api/v1/parks?limit=467&api_key=${process.env.REACT_APP_PARK_API_KEY}`
 }
 axios.request(options).then((response) => {
     res.json(response.data)
