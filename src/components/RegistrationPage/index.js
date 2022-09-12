@@ -25,10 +25,10 @@ const RegistrationPage = () => {
         headers.append('Content-Type', 'application/json');
         // headers.append('Accept', 'application/json');
 
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-        headers.append('Access-Control-Allow-Credentials', 'true');
+        // headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+        // headers.append('Access-Control-Allow-Credentials', 'true');
 
-        headers.append('GET', 'POST', 'OPTIONS');
+        // headers.append('GET', 'POST', 'OPTIONS');
         try {
             let res = await fetch("http://localhost:8080/api/auth/signup", {
                 mode:"cors",
@@ -38,9 +38,10 @@ const RegistrationPage = () => {
                 body: JSON.stringify(values),
             });
             let resJson = await res.json();
+            console.log(resJson)
             if (res.status === 200) {
-              console.log("User created successfully");
-            //   navigate('/parksresult')
+              console.log("User registration successfully");
+            console.log(resJson)
               return resJson;
             } 
           } catch (err) {
