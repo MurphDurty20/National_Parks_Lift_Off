@@ -57,17 +57,21 @@ axios.request(options).then((response) => {
 })
 })
 */
-app.get('/campgrounds', (req,res) => {
+
+app.get('/campgrounds/:parkCode', (req,res) => {
+    let parkCode = req.params.parkCode;
+
     const options = {
         method: 'GET',
-        url: `https://developer.nps.gov/api/v1/campgrounds?limit=5&api_key=${process.env.REACT_APP_PARK_API_KEY}`
-}
-axios.request(options).then((response) => {
-    res.json(response.data)
+        url: `https://developer.nps.gov/api/v1/campgrounds?parkCode=${parkCode}&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+    }
 
-}).catch((error) => {
-    console.error(error)
-})
+    axios.request(options).then((response) => {
+        res.json(response.data)
+
+    }).catch((error) => {
+        console.error(error)
+    })
 })
 
 app.listen(PORT, () => console.log(`port is ${PORT}`))

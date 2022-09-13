@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const Campgrounds = () => {
+const Campgrounds = ({ parkId }) => {
 
     const [campgroundInfo, getCampgroundInfo] = useState(null)
 
@@ -9,13 +9,11 @@ const Campgrounds = () => {
 
         const options = {
             method: 'GET',
-            url: 'http://localhost:8000/campgrounds'
+            url: `http://localhost:8000/campgrounds/${parkId}`
         }
 
         axios.request(options).then((response) => {
-            console.log(response.data)  
             getCampgroundInfo(response.data.data)
-
         }).catch((error) => {
             console.error(error)
         })
@@ -26,10 +24,10 @@ const Campgrounds = () => {
             {campgroundInfo?.map((campground, _index) => (
 
                 <div key={_index}>
-                    <p>ADDRESS</p>
-                    <p>{JSON.stringify(campground['addresses'])}</p>
+                    {/* <p>ADDRESS</p>
+                    <p>{JSON.stringify(campground['addresses'])}</p> */}
                     <p>FEES</p>
-                   <p>{JSON.stringify(campground['fees'])}</p>
+                   <p>{campground.fees[0].description}</p>
                    {/* <p>{campground['adainfo']}</p>
                    <p>{campground['accessroads']}</p> */}
                 </div>))}
