@@ -1,11 +1,18 @@
 import React from "react";
 import Campgrounds from "../../../../campgrounds";
 import Alerts from "../../../../Alerts";
+import { useParams } from "react-router-dom";
 
-const ResultTemplate = () => { 
+const ResultTemplate = () => {
+    let params = useParams();
+ 
     return (
     <div>
-        <Campgrounds />
+        <Campgrounds parkId={params.parkId} />
+        {/* <SectionTwo parkId={params.parkId} />
+        <SectionThree parkId={params.parkId} />
+        <SectionFour parkId={params.parkId} /> */}
+
     </div>
 )}
  
