@@ -5,6 +5,10 @@ import Parks from '../../../Parks';
 import Alerts from '../../../Alerts';
 import Fav from '../../../Fav';
 import SearchBar from '../../../searchBar';
+import campgrounds from '../../../campgrounds';
+
+
+
 
 const location = {
     address: 'Default location, change to search',
@@ -20,6 +24,7 @@ const location = {
         <Map location={location} zoomLevel={17} />
         <Alerts />
         <Parks />
+        <campgrounds />
     </div>
 )}
 

@@ -9,7 +9,6 @@ import LoginPage from './components/LoginPage';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 
-
 const App = () => { 
   
   return ( 
@@ -19,7 +18,6 @@ const App = () => {
       <h1> National Parks </h1>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/ResultTemplate" element={<ResultTemplate />} />
           <Route path="profile" element={
           <PrivateRoute>
             <Profile/>
@@ -27,6 +25,9 @@ const App = () => {
           }/>
           <Route path="register" element={<RegistrationPage/>}/>
           <Route path="login" element={<LoginPage/>}/>
+          <Route path="/ResultTemplate" element={<ResultTemplate />}>
+            <Route path=":parkId" element={<ResultTemplate />} />
+          </Route>
         </Routes>
      </Router>
     </div>
