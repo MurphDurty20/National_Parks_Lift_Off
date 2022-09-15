@@ -1,0 +1,16 @@
+.title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.feeTitle {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+}
+
+.HoO {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+}
