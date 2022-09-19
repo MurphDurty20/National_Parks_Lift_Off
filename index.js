@@ -114,6 +114,22 @@ app.get('/campgrounds/:parkCode', (req,res) => {
     })
 })
 
+app.get('/OnePark/:parkCode', (req,res) => {
+    let parkCode = req.params.parkCode;
+
+    const options = {
+        method: 'GET',
+        url: `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+    }
+
+    axios.request(options).then((response) => {
+        res.json(response.data)
+
+    }).catch((error) => {
+        console.error(error)
+    })
+})
+
 app.get('/oneParkInfo', (req,res) => {
     let code = "yell";
     const options = {

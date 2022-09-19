@@ -3,7 +3,7 @@
     width: 40%;
     margin: 0px;
     padding: 5px;
-    background:linear-gradient(180deg, rgb(133, 98, 1) 0%, rgb(255, 255, 255) 100%);
+    /* background:linear-gradient(180deg, rgb(133, 98, 1) 0%, rgb(255, 255, 255) 100%); */
 }
 
 .fees {
@@ -11,8 +11,8 @@
     width: 40%;
     margin: 0px;
     padding: 5px;
-    background: linear-gradient(180deg, rgb(52, 145, 52) 0%, rgb(255, 255, 255) 100%);
-}
+    /* background: linear-gradient(180deg, rgb(52, 145, 52) 0%, rgb(255, 255, 255) 100%);*/
+} 
 
 .images {
     position: relative;
