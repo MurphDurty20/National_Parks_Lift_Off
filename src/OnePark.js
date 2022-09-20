@@ -27,12 +27,23 @@ const OnePark = ({ parkId }) => {
         })
     }, [])
 
+    
+    const submitFav = (parkName) => {
+        axios.post("http://localhost:8000/", {favParkName: parkName
+    }).then(() => {
+        alert("Sending to backend success");
+    });
+    };
+
+
     return (<div className="OnePark">
         
             {OneParkInfo?.map((OnePark, _index) => (
 
                 <div key={_index}>
                     <h1 className = 'ParkName'>{OnePark.fullName}</h1>
+
+                    <button onClick={submitFav(OnePark.fullName)}>Add to Favorites</button>
                     <img className= 'HeaderImage' src= {OnePark.images[0].url}></img>
                     <Map location={{address: OnePark.fullName,lat: parseFloat(OnePark.latitude),lng: parseFloat(OnePark.longitude)}} zoomLevel={10} />
                    {/* <p className = 'hours'>{campground.name}: {campground.operatingHours[0].description}</p> */}
