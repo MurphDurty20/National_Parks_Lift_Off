@@ -7,42 +7,42 @@ import axios, { Axios } from 'axios'
 const listInfo = [];
 
 function Fav() {
-    const [favParkName, setFavParkName] = useState('');
+    const [parkInfo, getParkInfo] = useState(null);
     const [favList, setFavList] = useState([]); //initializes useState to empty array 
 
     useEffect(() => {
-        axios.get('http://localhost:8000/favlist').then((response) => {
-            setFavList(response.data);
+
+        const options = {
+            method: 'GET',
+            url: 'http://localhost:8000/favlist'
+        }
+
+        axios.request(options).then((response) => {
+            //console.log(response.data)  
+            getParkInfo(response.data)
+
+        }).catch((error) => {
+            console.error(error)
         })
     }, [])
 
+    const deleteFav = (parkName) => {
+        axios.delete(`http://localhost:8000/delete/${parkName}`);
 
+        window.location.reload();
+    };
+    
 
-
-
-const submitFav = () => {
-    axios.post("http://localhost:8000/", {favParkName: favParkName
-}).then(() => {
-    alert("Sending to backend success");
-});
-};
-
-
-    return (
-
-        <div className="Fav">
-
-            <h1>Select Favorite Park</h1>
-
-            <div className="form">
-                <label>Favorite Park(Set as Default)</label>
-                <input type ="text" name="favParkName" onChange={(e)=> {
-                    setFavParkName(e.target.value)
-                }} />
-                <button onClick={submitFav}>Submit</button>
-            </div>
-        </div>
-    );
+    return (<div className="favorite"> 
+    <h2><center>Favorites List</center></h2>
+            {
+            parkInfo?.map((fav, _index) => (
+                
+                <div key={_index}>
+                  
+                            <p value = {fav['name']}><a href={fav['url']}>{fav['name']}</a><button onClick={() => {deleteFav(fav['name']) }}>Delete</button></p> 
+                </div>))}
+      </div>)
 
 }
 
