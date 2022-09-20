@@ -20,7 +20,6 @@ const location = {
     return (
     <div>
       <SearchBar />
-        <Fav />
         <Map location={location} zoomLevel={17} />
         <Alerts />
         <Parks />

@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './searchBar.css';
  
-//const API_KEY=process.env.REACT_APP_PARK_API_KEY
- 
 function SearchBar() {
  
   const [parks, setParks] = useState([]);

@@ -20,12 +20,13 @@ const Campgrounds = ({ parkId }) => {
         })
     }, [])
 
+    
 
     return (<div className="campgrounds">
-        
             {campgroundInfo?.map((campground, _index) => (
-
+                
                 <div key={_index}>
+                    
                     <img className= 'images' src= {campground.images[0].url}></img>
                    <p className = 'fees'>{campground.name}: {campground.fees[0].description}</p>
                    <p className = 'hours'>{campground.name}: {campground.operatingHours[0].description}</p>

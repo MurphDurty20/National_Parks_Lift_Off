@@ -8,6 +8,7 @@ import RegistrationPage from './components/RegistrationPage';
 import LoginPage from './components/LoginPage';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import Fav from './Fav';
 
 const App = () => { 
   

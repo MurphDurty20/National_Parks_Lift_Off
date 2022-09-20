@@ -12,13 +12,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //creates fav_park table when backend runs if it doesn't already exist.
-db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, address VARCHAR(150) NOT NULL,latitude DECIMAL(13,10) NOT NULL, longitude DECIMAL(13,10) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
+db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL,  UNIQUE (name), PRIMARY KEY(id) ) ENGINE = innodb;");
 
 db.query("CREATE TABLE IF NOT EXISTS all_parks( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, codeName VARCHAR(5) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
-
-//app.get('/', (request,response) => {
-  //  response.json("hi")
-//})
 
 
 app.get("/favlist", (req, res) => {
@@ -31,30 +27,12 @@ app.get("/favlist", (req, res) => {
 app.post("/", (req,res) => {
 
     const favParkName = req.body.favParkName;
-    const sqlInsert = "INSERT INTO fav_park(name,address,latitude,longitude) VALUES (?, '2995 lincoln farm road hodgenville ky 42748', 37.5858662,-85.67330523)";
+    const sqlInsert = "INSERT INTO fav_park(name) VALUES (?)";
     db.query(sqlInsert, [favParkName], (err, result) => {
         console.log(err);
     });
     })
 
-
-    //doesnt work
-    app.post("/codes", (req,res) => {
-        const parkInfo = req.body.parkInfo;
-        console.log(parkInfo);
-        const sqlInsert = "INSERT INTO all_parks(name,codeName) VALUES (?, ?)";
-      //  parkInfo?.map((park, _index) => (
-          //  db.query(sqlInsert, [parkInfo, park['parkCode']], (err, result) => {
-            db.query(sqlInsert, [parkInfo, 'auto'], (err, result) => {
-            //    console.log(err);
-            
-         //   });
-    
-       // ));
-
-    
-    })
-})
 
     
 
