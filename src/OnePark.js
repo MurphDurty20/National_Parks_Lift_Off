@@ -1,6 +1,13 @@
-import {useEffect, useState} from 'react'
+import {Component, useEffect, useState} from 'react'
 import axios from 'axios'
 import './OnePark.css'
+import Map from './components/map/map'
+
+// const location = {
+//     address: ,
+//     lat: params.latitude,
+//     lng: -122.08427,
+//   }
 
 const OnePark = ({ parkId }) => {
 
@@ -20,7 +27,6 @@ const OnePark = ({ parkId }) => {
         })
     }, [])
 
-
     return (<div className="OnePark">
         
             {OneParkInfo?.map((OnePark, _index) => (
@@ -28,9 +34,8 @@ const OnePark = ({ parkId }) => {
                 <div key={_index}>
                     <h1 className = 'ParkName'>{OnePark.fullName}</h1>
                     <img className= 'HeaderImage' src= {OnePark.images[0].url}></img>
-
+                    <Map location={{address: OnePark.fullName,lat: parseFloat(OnePark.latitude),lng: parseFloat(OnePark.longitude)}} zoomLevel={10} />
                    {/* <p className = 'hours'>{campground.name}: {campground.operatingHours[0].description}</p> */}
-
                 </div>))}
         </div>)
     
