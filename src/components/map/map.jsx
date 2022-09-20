@@ -32,3 +32,16 @@ const Map = ({ location, zoomLevel }) => (
   )
 
   export default Map
+
+// need at top of file to import the map function
+  // import MapSection from './components/map/map.jsx'
+
+// need to have this location const in order to pass into map element
+  // const location = {
+  //   address: '1600 Amphitheatre Parkway, Mountain View, California.',
+  //   lat: 37.42216,
+  //   lng: -122.08427,
+  // }
+
+  //will need to be in the html to show map
+  // <MapSection location={location} zoomLevel={17} />

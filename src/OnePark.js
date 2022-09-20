@@ -1,6 +1,13 @@
-import {useEffect, useState} from 'react'
+import {Component, useEffect, useState} from 'react'
 import axios from 'axios'
 import './OnePark.css'
+import Map from './components/map/map'
+
+// const location = {
+//     address: ,
+//     lat: params.latitude,
+//     lng: -122.08427,
+//   }
 
 const OnePark = ({ parkId }) => {
 
@@ -19,6 +26,7 @@ const OnePark = ({ parkId }) => {
             console.error(error)
         })
     }, [])
+
     
     const submitFav = (parkName) => {
         axios.post("http://localhost:8000/", {favParkName: parkName
@@ -26,6 +34,7 @@ const OnePark = ({ parkId }) => {
         alert("Sending to backend success");
     });
     };
+
 
     return (<div className="OnePark">
         
@@ -36,9 +45,8 @@ const OnePark = ({ parkId }) => {
 
                     <button onClick={submitFav(OnePark.fullName)}>Add to Favorites</button>
                     <img className= 'HeaderImage' src= {OnePark.images[0].url}></img>
-
+                    <Map location={{address: OnePark.fullName,lat: parseFloat(OnePark.latitude),lng: parseFloat(OnePark.longitude)}} zoomLevel={10} />
                    {/* <p className = 'hours'>{campground.name}: {campground.operatingHours[0].description}</p> */}
-
                 </div>))}
         </div>)
     
