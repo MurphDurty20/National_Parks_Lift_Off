@@ -29,7 +29,8 @@ const OnePark = ({ parkId }) => {
 
     
     const submitFav = (parkName) => {
-        axios.post("http://localhost:8000/", {favParkName: parkName
+
+        axios.post("http://localhost:8000/", {favParkName: parkName, url: `http://localhost:3000/resultTemplate/${parkId}`
     }).then(() => {
         alert("Sending to backend success");
     });
