@@ -1,6 +1,7 @@
 import './App.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';import {  Link } from "react-router-dom";
+
 import './searchBar.css';
  
 function SearchBar() {
@@ -58,9 +59,9 @@ return (
   />
   {suggestions && suggestions.map((suggestions, i) =>
     <div key={i} className="suggestion">  
-      <div className='searchResults'><a className="searchLink" href={suggestions.url}>{suggestions.fullName}</a></div>
-     
-   
+      <div className='searchResults'>
+        <Link className="searchLink" to={`resulttemplate/${suggestions.parkCode}`}>{suggestions.fullName}</Link>
+      </div>
     </div>
   )}
  

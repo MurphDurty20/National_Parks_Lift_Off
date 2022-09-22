@@ -1,9 +1,15 @@
 .HeaderImage {
     width: 100%;
     height: 500px;
-    
+}
+
+@media screen and (min-width: 450px) and (max-width: 600px) {
+    .HeaderImage {
+        height: 300px;
+    }
 }
 
 .ParkName {
     text-align: center;
 }
+
