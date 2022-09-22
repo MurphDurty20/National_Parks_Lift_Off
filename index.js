@@ -16,9 +16,15 @@ db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREM
 //db.query("CREATE TABLE IF NOT EXISTS fav_park( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, UNIQUE (name), PRIMARY KEY(id) ) ENGINE = innodb;");
 db.query("CREATE TABLE IF NOT EXISTS all_parks( id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, codeName VARCHAR(5) NOT NULL, PRIMARY KEY(id) ) ENGINE = innodb;");
 
-
 app.get("/favlist", (req, res) => {
     db.query("SELECT * FROM fav_park", (err,result) => {
+        console.log(result);
+        res.send(result);
+    })
+})
+
+app.get("/allparks", (req, res) => {
+    db.query("SELECT * FROM all_parks", (err,result) => {
         console.log(result);
         res.send(result);
     })
@@ -32,17 +38,27 @@ app.post("/", (req,res) => {
     db.query(sqlInsert, [favParkName,pagePath], (err, result) => {
         console.log(err);
     });
-    })
+})
 
-    app.delete("/delete/:parkName", (req,res) => {
+app.post("/allparks", (req,res) => {
 
-        const favParkName = req.params.parkName;
+    const parkName = req.body.parkName;
+    const code = req.body.code;
+    const sqlInsert = "INSERT INTO all_parks (name, codeName) VALUES (?,?)";
+    db.query(sqlInsert, [parkName,code], (err, result) => {
+        console.log(err);
+    });
+})
+
+app.delete("/delete/:parkName", (req,res) => {
+
+    const favParkName = req.params.parkName;
       
-        const sqlDelete = "DELETE FROM fav_park WHERE name =?";
-        db.query(sqlDelete, [favParkName], (err, result) => {
-            console.log(err);
-        });
-        })
+    const sqlDelete = "DELETE FROM fav_park WHERE name =?";
+    db.query(sqlDelete, [favParkName], (err, result) => {
+        console.log(err);
+    });
+})
 
 
     
