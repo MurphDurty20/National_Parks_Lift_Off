@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {useNavigate} from 'react-router-dom';
-// import { useLocalState } from "../../util/useLocalStorage";
+import { useLocalState } from "../../util/useLocalStorage";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -10,6 +10,7 @@ const LoginPage = () => {
         password: ""
     })
     // const [jwt, setJwt] = useLocalState("","jwt")
+    // console.log(setJwt);
 
     const handleChange = (event) => {
         setValues({
@@ -39,12 +40,14 @@ const LoginPage = () => {
                 body: JSON.stringify(values),
             });
             let resJson = await res.json();
-            // setJwt(resJson.accessToken);
-            if (res.status === 200) {
-              console.log("User login successfully");
-              navigate('/')
-            console.log(resJson)
-              return resJson;
+           
+            if (res.status === 200 && resJson.accessToken) {
+                window.localStorage.setItem("jwt", resJson.accessToken)
+                // setJwt(resJson.accessToken);
+                console.log("User login successfully");
+                navigate('/')
+                console.log(resJson)
+                return resJson;
             } 
           } catch (err) {
             console.log(err);
