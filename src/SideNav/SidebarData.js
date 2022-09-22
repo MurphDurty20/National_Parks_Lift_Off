@@ -17,4 +17,16 @@ export const SidebarData = [
         icon: <BsIcons.BsFillTreeFill />,
         cName: 'nav-text'
     },
+    {
+        title: 'Sign Up',
+        path: '/',
+        icon: <BsIcons.BsFillTreeFill />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Sign In',
+        path: '/',
+        icon: <BsIcons.BsFillTreeFill />,
+        cName: 'nav-text'
+    },
 ]

@@ -9,7 +9,8 @@ const LoginPage = () => {
         username: "",
         password: ""
     })
-    const [jwt, setJwt] = useLocalState("","jwt")
+    // const [jwt, setJwt] = useLocalState("","jwt")
+    // console.log(setJwt);
 
     const handleChange = (event) => {
         setValues({
@@ -39,12 +40,14 @@ const LoginPage = () => {
                 body: JSON.stringify(values),
             });
             let resJson = await res.json();
-            setJwt(resJson.accessToken);
-            if (res.status === 200) {
-              console.log("User login successfully");
-              navigate('/')
-            console.log(resJson)
-              return resJson;
+           
+            if (res.status === 200 && resJson.accessToken) {
+                window.localStorage.setItem("jwt", resJson.accessToken)
+                // setJwt(resJson.accessToken);
+                console.log("User login successfully");
+                navigate('/')
+                console.log(resJson)
+                return resJson;
             } 
           } catch (err) {
             console.log(err);
@@ -54,7 +57,7 @@ const LoginPage = () => {
 
     return ( 
         <main>
-            <div>Jwt: {jwt}</div>
+            {/* <div>Jwt: {jwt}</div> */}
             <form onSubmit={handleSubmit}>
                 <div> 
                     <label htmlFor="username">Username</label>
