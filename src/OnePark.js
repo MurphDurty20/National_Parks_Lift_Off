@@ -3,12 +3,6 @@ import axios from 'axios'
 import './OnePark.css'
 import Map from './components/map/map'
 
-// const location = {
-//     address: ,
-//     lat: params.latitude,
-//     lng: -122.08427,
-//   }
-
 const OnePark = ({ parkId }) => {
 
     const [OneParkInfo, getOneParkInfo] = useState(null)

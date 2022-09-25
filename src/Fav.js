@@ -40,7 +40,7 @@ function Fav() {
                 
                 <div key={_index}>
                   
-                            <p value = {fav['name']}><a href={fav['url']}>{fav['name']}</a><button onClick={() => {deleteFav(fav['name']) }}>Delete</button></p> 
+                            <p value = {fav['name']}><a href={fav['url']}>{fav['name']}</a><br /><button onClick={() => {deleteFav(fav['name']) }}>Delete</button></p> 
                 </div>))}
       </div>)
 
