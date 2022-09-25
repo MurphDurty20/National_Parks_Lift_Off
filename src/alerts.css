@@ -1,0 +1,11 @@
+.alerts {
+    float: left;
+    width: 45%
+}
+
+.alertsTitle {
+    background-color: #060b26;
+    margin: 30px;
+    color: white
+}
+

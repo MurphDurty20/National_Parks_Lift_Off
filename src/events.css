@@ -1,0 +1,10 @@
+.events {
+    float:right;
+    width: 45%
+}
+
+.eventsTitle {
+    background-color: #060b26;
+    margin: 30px;
+    color: white
+}

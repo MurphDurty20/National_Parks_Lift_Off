@@ -72,11 +72,11 @@ axios.request(options).then((response) => {
     console.error(error)
 })
 })
-/*
-app.get('parksplaces', (req,res) => {
+
+app.get('/events', (req,res) => {
     const options = {
         method: 'GET',
-        url: `https://developer.nps.gov/api/v1/amenities/parksplaces?limit=500&api_key=${process.env.REACT_APP_PARK_API_KEY}`
+        url: `https://developer.nps.gov/api/v1/events?limit=5&api_key=${process.env.REACT_APP_PARK_API_KEY}`
 }
 axios.request(options).then((response) => {
     res.json(response.data)
@@ -85,7 +85,6 @@ axios.request(options).then((response) => {
     console.error(error)
 })
 })
-*/
 
 app.get('/campgrounds/:parkCode', (req,res) => {
     let parkCode = req.params.parkCode;

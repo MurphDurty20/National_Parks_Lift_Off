@@ -16,7 +16,6 @@ const App = () => {
 
     <div className="App">
       <Router>
-      <h1> National Parks </h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="profile" element={
