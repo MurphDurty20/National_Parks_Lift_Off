@@ -1,6 +1,7 @@
 import { useState } from "react"
 import {useNavigate} from 'react-router-dom';
 import { useLocalState } from "../../util/useLocalStorage";
+import "./index.css"
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -44,10 +45,14 @@ const LoginPage = () => {
             if (res.status === 200 && resJson.accessToken) {
                 window.localStorage.setItem("jwt", resJson.accessToken)
                 // setJwt(resJson.accessToken);
+                alert("User login successfully");
                 console.log("User login successfully");
                 navigate('/')
                 console.log(resJson)
                 return resJson;
+            }else{
+                alert("User login unsuccessfully");
+                
             } 
           } catch (err) {
             console.log(err);
@@ -58,12 +63,12 @@ const LoginPage = () => {
     return ( 
         <main>
             {/* <div>Jwt: {jwt}</div> */}
-            <form onSubmit={handleSubmit}>
+            <form  className="login" onSubmit={handleSubmit}>
                 <div> 
-                    <label htmlFor="username">Username</label>
-                    <input type="text" placeholder="Enter Username" name="username" value={values.username} onChange={handleChange} required/>
+                    {/* <label htmlFor="username">Username</label> */}
+                    <input type="text" placeholder="Username" name="username" value={values.username} onChange={handleChange} required/>
                     
-                    <label htmlFor="password">Password</label>
+                    {/* <label htmlFor="password">Password</label> */}
                     <input type="text" placeholder="Password" name="password" value={values.password} onChange={handleChange} required/>
                     
                     <button type="submit">Login</button>
