@@ -14,3 +14,9 @@
     justify-content: center;
     font-size: 3rem;
   }
+
+  .homepagepicture {
+    float: left;
+    width: 66%;
+    border-radius: 15px;
+  }

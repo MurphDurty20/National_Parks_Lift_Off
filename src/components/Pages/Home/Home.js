@@ -1,29 +1,22 @@
 import React from 'react';
 import './Home.css';
-import Map from '../../map/map';
-import Parks from '../../../Parks';
 import Alerts from '../../../Alerts';
 import Fav from '../../../Fav';
 import SearchBar from '../../../searchBar';
-import campgrounds from '../../../campgrounds';
-
-
-
-
-const location = {
-    address: 'Default location, change to search',
-    lat: 37.42216,
-    lng: -100,
-  }
+import Pictures from '../../../pictures';
+import Sidebar from '../../../SideNav/Sidebar';
+import Events from '../../../events';
 
   const Home = () => { 
     return (
     <div>
+      <Sidebar />
+      <h1><center> National Parks </center></h1>
       <SearchBar />
       <Fav />
-        <Map location={location} zoomLevel={17} />
+      <Pictures />
         <Alerts />
-        <campgrounds />
+        <Events />
     </div>
 )}
 

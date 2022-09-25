@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import './alerts.css'
 
 const Alerts = () => {
 
@@ -23,11 +24,12 @@ const Alerts = () => {
 
 
     return (<div className="alerts">
-            <h2><center>Alerts</center></h2>
+            <h2 className='alertsTitle'><center>Alerts</center></h2>
             {alertInfo?.map((alert, _index) => (
 
                 <div key={_index}>
-                   <p>{alert['parkCode']}</p>
+                   <h3 ><center>{alert['parkCode']}</center></h3>
+                   <p ><center>{alert['title']}</center></p>
                    <p>{alert['description']}</p>
                    <p>{alert['lastIndexedDate']}</p>
                 </div>))}
