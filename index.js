@@ -25,8 +25,11 @@ app.post("/", (req,res) => {
     const favParkName = req.body.favParkName;
     const pagePath = req.body.url;
     const sqlInsert = "INSERT INTO fav_park(name,url) VALUES (?,?)";
-    db.query(sqlInsert, [favParkName,pagePath], (err, result) => {
+    db.query(sqlInsert, [favParkName,pagePath], (err, result,info) => {
+            
         console.log(err);
+        res.send(err);
+        
     });
     })
 
