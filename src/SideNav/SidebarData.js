@@ -12,12 +12,6 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Home',
-        path: '/',
-        icon: <BsIcons.BsFillTreeFill />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Sign Up',
         path: '/',
         icon: <BsIcons.BsFillTreeFill />,

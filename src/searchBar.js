@@ -60,7 +60,7 @@ return (
   {suggestions && suggestions.map((suggestions, i) =>
     <div key={i} className="suggestion">  
       <div className='searchResults'>
-        <Link className="searchLink" to={`resulttemplate/${suggestions.parkCode}`}>{suggestions.fullName}</Link>
+        <Link className="searchLink" to={`/resulttemplate/${suggestions.parkCode}`}>{suggestions.fullName}</Link>
       </div>
     </div>
   )}

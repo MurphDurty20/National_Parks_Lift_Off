@@ -19,7 +19,7 @@ const OnePark = ({ parkId }) => {
         }).catch((error) => {
             console.error(error)
         })
-    }, [])
+    }, [parkId])
 
     
     const submitFav = (parkName) => {
