@@ -18,7 +18,7 @@ const Campgrounds = ({ parkId }) => {
         }).catch((error) => {
             console.error(error)
         })
-    }, [])
+    }, [parkId])
 
     
 
